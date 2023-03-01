@@ -25,19 +25,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
         binding.buttonSave.setOnClickListener {
             val name = binding.editTextName.text.toString()
             val phoneNum = binding.editTextNumber.text.toString()
             val address = binding.editTextAddress.text.toString()
 
-            val person = hashMapOf(
+            val Contacts = hashMapOf(
                 "name" to name,
                 "phoneNum" to phoneNum,
                 "address" to address,
             )
 
-            db.collection("persons")
-                .add(person)
+            db.collection("Contacts")
+                .add(Contacts)
                 .addOnSuccessListener { documentReference ->
                     Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
                 }.addOnFailureListener { e ->
@@ -46,19 +48,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.buttonSave3.setOnClickListener {
-            db.collection("persons")
+            db.collection("Contacts")
                 .get()
                 .addOnSuccessListener { result ->
                     for (document in result) {
                         Toast.makeText(this, "${document.data}", Toast.LENGTH_SHORT).show()
-//                        Log.d(TAG, "${document.id} => ${document.data}")
                     }
                 }
                 .addOnFailureListener { exception ->
                     Toast.makeText(this, "Error getting documents.", Toast.LENGTH_SHORT).show()
-//                    Log.w(TAG, "Error getting documents.", exception)
                 }
         }
-
     }
 }
