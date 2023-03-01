@@ -1,11 +1,11 @@
 package com.hzmahmed.assignment_1
 
-import android.app.ProgressDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
+import android.widget.Toast
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.hzmahmed.assignment_1.databinding.ActivityMainBinding
@@ -25,6 +25,40 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.buttonSave.setOnClickListener {
+            val name = binding.editTextName.text.toString()
+            val phoneNum = binding.editTextNumber.text.toString()
+            val address = binding.editTextAddress.text.toString()
+
+            val person = hashMapOf(
+                "name" to name,
+                "phoneNum" to phoneNum,
+                "address" to address,
+            )
+
+            db.collection("persons")
+                .add(person)
+                .addOnSuccessListener { documentReference ->
+                    Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+                }.addOnFailureListener { e ->
+                    Toast.makeText(this, "Fail", Toast.LENGTH_SHORT).show()
+                }
+        }
+
+        binding.buttonSave3.setOnClickListener {
+            db.collection("persons")
+                .get()
+                .addOnSuccessListener { result ->
+                    for (document in result) {
+                        Toast.makeText(this, "${document.data}", Toast.LENGTH_SHORT).show()
+//                        Log.d(TAG, "${document.id} => ${document.data}")
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Toast.makeText(this, "Error getting documents.", Toast.LENGTH_SHORT).show()
+//                    Log.w(TAG, "Error getting documents.", exception)
+                }
+        }
 
     }
 }
