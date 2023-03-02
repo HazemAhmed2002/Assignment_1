@@ -2,10 +2,9 @@ package com.hzmahmed.assignment_1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ListView
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.hzmahmed.assignment_1.databinding.ActivityMainBinding
@@ -13,18 +12,17 @@ import com.hzmahmed.assignment_1.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var mNameEditText: EditText
-    private lateinit var mNumberEditText: EditText
-    private lateinit var mAddressEditText: EditText
-    private lateinit var mSaveButton: Button
-    private lateinit var mContactsListView: ListView
 
     lateinit var binding: ActivityMainBinding
+
+
+    val listAdapter = ListAdapter()
     val db = Firebase.firestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
 
         binding.buttonSave.setOnClickListener {
@@ -35,7 +33,7 @@ class MainActivity : AppCompatActivity() {
             val Contacts = hashMapOf(
                 "name" to name,
                 "phoneNum" to phoneNum,
-                "address" to address,
+                "address" to address
             )
 
             db.collection("Contacts")
@@ -45,19 +43,20 @@ class MainActivity : AppCompatActivity() {
                 }.addOnFailureListener { e ->
                     Toast.makeText(this, "Fail", Toast.LENGTH_SHORT).show()
                 }
+            listAdapter.addItem(name,phoneNum,address)
+            listAdapter.notifyItemChanged(changingConfigurations)
         }
 
-        binding.buttonSave3.setOnClickListener {
-            db.collection("Contacts")
-                .get()
-                .addOnSuccessListener { result ->
-                    for (document in result) {
-                        Toast.makeText(this, "${document.data}", Toast.LENGTH_SHORT).show()
-                    }
-                }
-                .addOnFailureListener { exception ->
-                    Toast.makeText(this, "Error getting documents.", Toast.LENGTH_SHORT).show()
-                }
+        binding.recyclerview01.apply {
+            adapter = listAdapter
+            layoutManager = LinearLayoutManager(context)
+            setHasFixedSize(true)
+        }
+
+        binding.refreshLayout01.setOnRefreshListener {
+            listAdapter.notifyDataSetChanged()
+            Toast.makeText(applicationContext, "List Refresh", Toast.LENGTH_SHORT).show()
+            binding.refreshLayout01.isRefreshing = false
         }
     }
 }
