@@ -45,6 +45,10 @@ class MainActivity : AppCompatActivity() {
                 }
             listAdapter.addItem(name,phoneNum,address)
             listAdapter.notifyItemChanged(changingConfigurations)
+
+            binding.editTextName.text.clear()
+            binding.editTextNumber.text.clear()
+            binding.editTextAddress.text.clear()
         }
 
         binding.recyclerview01.apply {
