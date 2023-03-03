@@ -46,9 +46,15 @@ class MainActivity : AppCompatActivity() {
             listAdapter.addItem(name,phoneNum,address)
             listAdapter.notifyItemChanged(changingConfigurations)
 
+
             binding.editTextName.text.clear()
             binding.editTextNumber.text.clear()
             binding.editTextAddress.text.clear()
+
+
+            listAdapter.notifyDataSetChanged()
+            Toast.makeText(applicationContext, "List Refresh", Toast.LENGTH_SHORT).show()
+            binding.refreshLayout01.isRefreshing = false
         }
 
         binding.recyclerview01.apply {
@@ -56,6 +62,7 @@ class MainActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
         }
+
 
         binding.refreshLayout01.setOnRefreshListener {
             listAdapter.notifyDataSetChanged()
