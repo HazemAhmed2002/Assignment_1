@@ -43,5 +43,12 @@
         android:textAllCaps="false"
         app:rippleColor="#800900" />
 
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginVertical="3dp"
+        android:background="#3F51B5" />
+
 
 </LinearLayout>
