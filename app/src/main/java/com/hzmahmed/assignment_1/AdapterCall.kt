@@ -17,12 +17,12 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.MyView>() {
                 .get()
                 .addOnSuccessListener { result ->
                     count = result.size()
-                    var doc =result.documents[pos]
-                        binding.textName.text = doc.data!!["name"].toString()
-                        binding.textPhone.text = doc.data!!["phoneNum"].toString()
-                        binding.textAddress.text = doc.data!!["address"].toString()
+                    var row =result.documents[pos]
+                        binding.textName.text = row.data!!["name"].toString()
+                        binding.textPhone.text = row.data!!["phoneNum"].toString()
+                        binding.textAddress.text = row.data!!["address"].toString()
                     binding.remove.setOnClickListener {
-                        db.collection("Contacts").document(doc.id).delete()
+                        db.collection("Contacts").document(row.id).delete()
                         count--
                     }
                 }

@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             db.collection("Contacts")
                 .add(Contacts)
                 .addOnSuccessListener { documentReference ->
-                    Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show()
                 }.addOnFailureListener { e ->
                     Toast.makeText(this, "Fail", Toast.LENGTH_SHORT).show()
                 }

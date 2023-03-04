@@ -9,39 +9,50 @@
 
     <TextView
         android:id="@+id/textName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
+        android:hint="name"
         android:paddingEnd="10dp"
-        android:text="name"
         android:textColor="#2196F3"
+        android:textColorHint="#2196F3"
         android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textPhone"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
+        android:hint="phone"
         android:paddingEnd="10dp"
-        android:text="phone"
         android:textColor="#2196F3"
+        android:textColorHint="#2196F3"
         android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textAddress"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
+        android:hint="address"
         android:paddingEnd="10dp"
-        android:text="name"
         android:textColor="#2196F3"
+        android:textColorHint="#2196F3"
         android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/remove"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#FF0000"
-        android:text="Delete"
-        android:textAllCaps="false"
-        app:rippleColor="#800900" />
+
+        <Button
+            android:id="@+id/remove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF0000"
+            android:drawableTop="@drawable/delete"
+            android:text="Delete"
+            android:textAllCaps="false"
+            app:rippleColor="#800900" />
+
+
+
 
     <View
         android:id="@+id/view"
