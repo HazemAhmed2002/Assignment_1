@@ -1,8 +1,11 @@
 package com.hzmahmed.assignment_1
 
+import android.app.Application
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -10,6 +13,7 @@ import com.hzmahmed.assignment_1.databinding.CalRowItemBinding
 
 class ListAdapter: RecyclerView.Adapter<ListAdapter.MyView>() {
     val db = Firebase.firestore
+
     var count = 0
     inner class MyView(private val binding: CalRowItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(pos: Int) {

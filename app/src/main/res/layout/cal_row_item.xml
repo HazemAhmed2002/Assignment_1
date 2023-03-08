@@ -6,53 +6,57 @@
     android:orientation="vertical"
     android:padding="5dp"
     android:gravity="center">
-
-    <TextView
-        android:id="@+id/textName"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:hint="name"
-        android:paddingEnd="10dp"
-        android:textColor="#2196F3"
-        android:textColorHint="#2196F3"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/textPhone"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:hint="phone"
-        android:paddingEnd="10dp"
-        android:textColor="#2196F3"
-        android:textColorHint="#2196F3"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/textAddress"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:hint="address"
-        android:paddingEnd="10dp"
-        android:textColor="#2196F3"
-        android:textColorHint="#2196F3"
-        android:textSize="20sp" />
-
-
-        <Button
-            android:id="@+id/remove"
-            android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center">
+        <LinearLayout
+            android:layout_width="270dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FF0000"
-            android:drawableTop="@drawable/delete"
-            android:text="Delete"
-            android:textAllCaps="false"
-            app:rippleColor="#800900" />
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/textName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left"
+                android:hint="name"
+                android:paddingEnd="10dp"
+                android:textColor="#2196F3"
+                android:textColorHint="#2196F3"
+                android:textSize="20sp" />
 
+            <TextView
+                android:id="@+id/textPhone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left"
+                android:hint="phone"
+                android:paddingEnd="10dp"
+                android:textColor="#2196F3"
+                android:textColorHint="#2196F3"
+                android:textSize="20sp" />
 
-
+            <TextView
+                android:id="@+id/textAddress"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left"
+                android:hint="address"
+                android:paddingEnd="10dp"
+                android:textColor="#2196F3"
+                android:textColorHint="#2196F3"
+                android:textSize="20sp" />
+        </LinearLayout>
+        <ImageButton
+            android:id="@+id/remove"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:background="#FF0000"
+            android:layout_gravity="end|bottom"
+            app:srcCompat="@drawable/delete" />
+    </LinearLayout>
 
     <View
         android:id="@+id/view"
@@ -60,6 +64,8 @@
         android:layout_height="2dp"
         android:layout_marginVertical="3dp"
         android:background="#3F51B5" />
+
+
 
 
 </LinearLayout>
